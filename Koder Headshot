@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KODER HEADSHOT</title>
+    <style>
+        /* CSS code here */
+    </style>
+</head>
+<body>
+    <h1>KODER HEADSHOT</h1>
+    <img id="npcImage" src="https://img.upanh.tv/2025/01/20/4774CA97-678E-429D-8F46-8DF853ABD1FC.png" alt="Hình ảnh NPC" class="hidden">
+    <div class="npc">
+        <div class="head">
+            <span class="icon">💀</span>
+        </div>
+        <div class="body"></div>
+        <div class="arm left"></div>
+        <div class="arm right"></div>
+        <div class="leg left"></div>
+        <div class="leg right"></div>
+    </div>
+    
+    <div class="button-container">
+        <button onclick="toggleHead(this)">HEADTRICK</button>
+        <button onclick="toggleBody(this)">Body Aim</button>
+        <button onclick="window.location.href='https://zalo.me/0868124375'">🩴 Admin</button>
+        <button onclick="activateButton(this)">Aimlock Vip</button> 
+    </div>
+
+    <div class="credit">Phạm Đồng An</div> 
+
+    <script>
+        let headShotActive = false;
+        let bodyActive = false;
+
+        function toggleHead(button) {
+            const head = document.querySelector('.head');
+            const npcImage = document.getElementById('npcImage');
+            headShotActive = !headShotActive;
+
+            head.style.backgroundColor = headShotActive ? 'red' : '#ffcc00';
+            npcImage.classList.toggle('hidden', !headShotActive);
+            activateButton(button);
+        }
+
+        function toggleBody(button) {
+            const body = document.querySelector('.body');
+            bodyActive = !bodyActive;
+            body.style.backgroundColor = bodyActive ? 'red' : '#00ccff';
+            activateButton(button);
+        }
+
+        function activateButton(button) {
+            const buttons = document.querySelectorAll('.button-container button');
+            buttons.forEach(btn => {
+                if (btn !== document.querySelector('button:nth-child(3)')) {
+                    btn.classList.remove('active');
+                }
+            });
+            button.classList.add('active');
+        }
+    </script>
+</body>
+</html>
