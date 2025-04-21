@@ -1,64 +1,25 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="vi">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Control Panel</title>
+    <title>Optimized Đồng An IOS</title>
+    <script src="https://cdn.tailwindcss.com"></script>
     <style>
-        /* Reset default styles */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            background: #ffffff; /* Nền trắng */
-            color: #333; /* Màu chữ */
-            padding: 30px; /* Xê dịch mọi thứ xuống 10px */
+            font-family: Arial, sans-serif;
         }
-
-        .container {
-            max-width: 400px;
-            margin: 0 auto;
+        .custom-shadow {
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
         }
-
-        .panel-title {
-            text-align: center;
-            margin-top: 20px; /* Thêm margin-top 20px */
-            margin-bottom: 20px;
-            color: #00ff9d; /* Màu chữ tiêu đề */
-            font-size: 2em; /* Kích thước chữ lớn hơn */
-            font-weight: bold; /* Chữ đậm */
-            text-shadow: 2px 2px 0px black; /* Viền đen cho chữ */
-        }
-
-        /* Control Cards */
-        .control-card {
-            background: #f0f0f0; /* Màu nền thẻ */
-            border-radius: 15px;
-            padding: 15px;
-            margin-bottom: 15px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        }
-
-        /* Toggle Switch */
-        .toggle-switch {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            margin: 10px 0;
-        }
-
-        .switch {
+        .toggle {
             position: relative;
             display: inline-block;
             width: 60px;
             height: 34px;
         }
 
-        .switch input {
+        .toggle input {
             opacity: 0;
             width: 0;
             height: 0;
@@ -71,8 +32,8 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background: #444;
-            transition: 0.4s;
+            background-color: #ccc;
+            transition: .4s;
             border-radius: 34px;
         }
 
@@ -83,186 +44,137 @@
             width: 26px;
             left: 4px;
             bottom: 4px;
-            background: white;
-            transition: 0.4s;
+            background-color: white;
+            transition: .4s;
             border-radius: 50%;
         }
 
         input:checked + .slider {
-            background: #00ff9d;
+            background-color: #4CAF50;
         }
 
         input:checked + .slider:before {
             transform: translateX(26px);
         }
-
-        /* Slider Styling */
-        .slider-control {
-            width: 100%;
-            margin: 15px 0;
-            -webkit-appearance: none;
-            height: 8px;
-            background: #444;
-            border-radius: 4px;
-            outline: none;
-            background-size: 0% 100%; /* Mặc định là 0% */
-        }
-
-        .slider-control::-webkit-slider-thumb {
-            -webkit-appearance: none;
-            width: 24px;
-            height: 24px;
-            background: #00ff9d;
-            border-radius: 50%;
-            cursor: pointer;
-        }
-
-        /* Status Indicator */
-        .status {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            margin: 10px 0;
-        }
-
-        .status-led {
-            width: 12px;
-            height: 12px;
-            border-radius: 50%;
-            background: #ff3b30;
-        }
-
-        .status-led.active {
-            background: #00ff9d;
-        }
-
-        /* Nhấn đậm cho tất cả chữ */
-        h1, label, span {
-            font-weight: bold; /* Chữ đậm */
-        }
-
-        /* Nút Zalo Admin */
-        .zalo-button {
-            display: block;
-            width: 100%;
-            padding: 10px;
-            background-color: black; /* Màu nền nút */
-            color: white; /* Màu chữ nút */
-            border: none;
-            border-radius: 5px;
-            text-align: center;
-            font-weight: bold;
-            cursor: pointer;
-            margin-top: 15px; /* Khoảng cách phía trên */
-            text-decoration: none; /* Bỏ gạch chân */
-        }
-
-        .zalo-button:hover {
-            background-color: #00cc7d; /* Màu nền khi hover */
-        }
     </style>
 </head>
-<body>
-    <div class="container">
-        <h1 class="panel-title"> KODER HEADSHOT</h1>
+<body class="bg-gray-200 p-6">
 
-        <!-- Power Control -->
-        <div class="control-card">
-            <div class="toggle-switch">
-                <span>SET UP REGEDIT</span>
-                <label class="switch">
-                    <input type="checkbox" id="powerSwitch">
-                    <span class="slider"></span>
-                </label>
-            </div>
-            <div class="status">
-                <div class="status-led" id="powerLed"></div>
-                <span>Status: <span id="powerStatus">OFF</span></span>
-            </div>
+<h1 class="text-5xl font-extrabold text-black text-center mb-8">Optimze IOS</h1>
+
+<div class="input-container text-center mb-6">
+    <input type="text" id="keyInput" placeholder="Nhập khóa..." class="p-4 text-2xl border-2 border-green-500 rounded-lg w-80 focus:border-green-700 transition duration-300 ease-in-out" />
+    <button onclick="checkKey()" class="ml-2 p-4 text-2xl bg-green-500 text-white rounded-lg hover:bg-green-600 transition duration-300 ease-in-out">Xác Nhận</button>
+</div>
+
+<div class="menu-container custom-shadow bg-white rounded-lg p-6 mb-6" id="menuContainer" style="display: none;">
+    <ul class="menu">
+        <li class="menu-item flex justify-between items-center mb-4">
+            <span class="text-xl font-semibold">Optimized Configuration</span>
+            <label class="toggle">
+                <input type="checkbox" onclick="toggle(this)">
+                <span class="slider"></span>
+            </label>
+        </li>
+        <li class="menu-item flex justify-between items-center mb-4">
+            <span class="text-xl font-semibold">Setup DPI Config</span>
+            <label class="toggle">
+                <input type="checkbox" onclick="toggle(this)">
+                <span class="slider"></span>
+            </label>
+        </li>
+        <li class="menu-item flex justify-between items-center mb-4">
+            <span class="text-xl font-semibold">Tối Ưu Hóa</span>
+            <label class="toggle">
+                <input type="checkbox" onclick="toggle(this)">
+                <span class="slider"></span>
+            </label>
+        </li>
+        <li class="menu-item flex justify-between items-center mb-4">
+            <span class="text-xl font-semibold">Gaming booster</span>
+            <label class="toggle">
+                <input type="checkbox" onclick="toggle(this)">
+                <span class="slider"></span>
+            </label>
+        </li>
+        <li class="menu-item flex justify-between items-center mb-4">
+            <span class="text-xl font-semibold">Gaming mode</span>
+            <label class="toggle">
+                <input type="checkbox" onclick="toggle(this)">
+                <span class="slider"></span>
+            </label>
+        </li>
+    </ul>
+</div>
+
+<div class="contact-info text-center text-lg text-black" id="contactInfo" style="display: none;">
+    Zalo Admin Đồng An : <strong>0868124375</strong>
+</div>
+
+<div class="sliders-container max-w-xl mx-auto mt-6" id="slidersContainer" style="display: none;">
+    <div class="bg-white p-4 rounded-lg shadow-md mb-4">
+        <h2 class="text-lg font-semibold mb-2">Tỉ Lệ Headshot</h2>
+        <div class="flex items-center">
+            <span class="text-gray-800 mr-2">0</span>
+            <input type="range" min="0" max="85" value="0" class="flex-1 h-2 bg-blue-500 rounded-lg appearance-none cursor-pointer" oninput="this.previousElementSibling.textContent = this.value">
         </div>
-
-        <!-- Brightness Control -->
-        <div class="control-card">
-            <label>AIMFOV PREMIUM 360•</label>
-            <input type="range" class="slider-control" id="brightnessSlider" min="0" max="360" value="180">
-            <div class="status">
-                <span>Value: <span id="brightnessValue">180</span>•</span>
-            </div>
-        </div>
-
-        <!-- Volume Control (New) -->
-        <div class="control-card">
-            <label>SENSITIVITY HEADSHOT</label>
-            <input type="range" class="slider-control" id="volumeSlider" min="0" max="100" value="50">
-            <div class="status">
-                <span>Value: <span id="volumeValue">50</span>%</span>
-            </div>
-        </div>
-
-        <!-- Mode Selector -->
-        <div class="control-card">
-            <label>DEVELOPER : PHẠM ĐỒNG AN</label>
-            <div class="toggle-switch">
-                <button class="mode-btn" onclick="setMode('FREE FIRE ')">FREE FIRE</button>
-                <button class="mode-btn" onclick="setMode('FREE FIRE MAX')">FREE FIRE MAX</button>
-            </div>
-            <div class="status">
-                <span>Mode : <span id="currentMode">Auto</span></span>
-            </div>
-        </div>
-
-        <!-- Zalo Admin Button -->
-        <a href="https://zalo.me/0868124375" target="_blank" class="zalo-button">ZALO MUA FILE VIP FULL ĐỎ</a>
     </div>
+    <div class="bg-white p-4 rounded-lg shadow-md mb-4">
+        <h2 class="text-lg font-semibold mb-2">Chống Rung Tâm</h2>
+        <div class="flex items-center">
+            <span class="text-gray-800 mr-2">0</span>
+            <input type="range" min="0" max="90" value="0" class="flex-1 h-2 bg-blue-500 rounded-lg appearance-none cursor-pointer" oninput="this.previousElementSibling.textContent = this.value">
+        </div>
+    </div>
+    <div class="bg-white p-4 rounded-lg shadow-md mb-4">
+        <h2 class="text-lg font-semibold mb-2">Giảm Độ Giật</h2>
+        <div class="flex items-center">
+            <span class="text-gray-800 mr-2">0</span>
+            <input type="range" min="0" max="95" value="0" class="flex-1 h-2 bg-blue-500 rounded-lg appearance-none cursor-pointer" oninput="this.previousElementSibling.textContent = this.value">
+        </div>
+    </div>
+    <div class="bg-white p-4 rounded-lg shadow-md mb-4">
+        <h2 class="text-lg font-semibold mb-2">Tối ưu FPS</h2>
+        <div class="flex items-center">
+            <span class="text-gray-800 mr-2">0</span>
+            <input type="range" min="0" max="95" value="0" class="flex-1 h-2 bg-blue-500 rounded-lg appearance-none cursor-pointer" oninput="this.previousElementSibling.textContent = this.value">
+        </div>
+    </div>
+    <div class="bg-white p-4 rounded-lg shadow-md mb-4">
+        <h2 class="text-lg font-semibold mb-2">Mượt wifi</h2>
+        <div class="flex items-center">
+            <span class="text-gray-800 mr-2">0</span>
+            <input type="range" min="0" max="95" value="0" class="flex-1 h-2 bg-blue-500 rounded-lg appearance-none cursor-pointer" oninput="this.previousElementSibling.textContent = this.value">
+        </div>
+    </div>
+</div>
 
-    <script>
-        // Power Toggle Logic
-        const powerSwitch = document.getElementById('powerSwitch');
-        const powerLed = document.getElementById('powerLed');
-        const powerStatus = document.getElementById('powerStatus');
-
-        powerSwitch.addEventListener('change', function() {
-            if (this.checked) {
-                powerLed.classList.add('active');
-                powerStatus.textContent = 'ON';
-            } else {
-                powerLed.classList.remove('active');
-                powerStatus.textContent = 'OFF';
-            }
-        });
-
-        // Brightness Slider
-        const brightnessSlider = document.getElementById('brightnessSlider');
-        const brightnessValue = document.getElementById('brightnessValue');
-
-        brightnessSlider.addEventListener('input', function() {
-            brightnessValue.textContent = this.value;
-            updateSliderBackground(this);
-        });
-
-        // Volume Slider (New)
-        const volumeSlider = document.getElementById('volumeSlider');
-        const volumeValue = document.getElementById('volumeValue');
-
-        volumeSlider.addEventListener('input', function() {
-            volumeValue.textContent = this.value;
-            updateSliderBackground(this);
-        });
-
-        // Cập nhật màu nền của thanh slider
-        function updateSliderBackground(slider) {
-            const value = (slider.value - slider.min) / (slider.max - slider.min) * 100;
-            slider.style.background = `linear-gradient(to right, red ${value}%, #444 ${value}%)`;
+<script>
+    function checkKey() {
+        const keyInput = document.getElementById('keyInput').value;
+        const menuContainer = document.getElementById('menuContainer');
+        const contactInfo = document.getElementById('contactInfo');
+        const inputContainer = document.getElementsByClassName('input-container')[0];
+        const slidersContainer = document.getElementById('slidersContainer');
+        
+        if (keyInput === '123') {
+            menuContainer.style.display = 'block';
+            contactInfo.style.display = 'block'; // Hiển thị thông tin liên hệ
+            inputContainer.style.display = 'none'; // Ẩn ô nhập mật khẩu
+            slidersContainer.style.display = 'block'; // Hiển thị sliders
+        } else {
+            alert('Khóa không đúng. Vui lòng thử lại.');
         }
+    }
 
-        // Khởi tạo màu nền cho các slider
-        updateSliderBackground(brightnessSlider);
-        updateSliderBackground(volumeSlider);
-
-        // Mode Selector Logic
-        function setMode(mode) {
-            document.getElementById('currentMode').textContent = mode;
+    function toggle(checkbox) {
+        if (checkbox.checked) {
+            console.log("Bật");
+        } else {
+            console.log("Tắt");
         }
-    </script>
+    }
+</script>
+
 </body>
 </html>
