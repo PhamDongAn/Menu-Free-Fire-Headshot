@@ -1,65 +1,267 @@
 <!DOCTYPE html>
-<html lang="vi">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>KODER HEADSHOT</title>
+    <title>Control Panel</title>
     <style>
-        /* CSS code here */
+        /* Reset default styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #ffffff; /* Nền trắng */
+            color: #333; /* Màu chữ */
+            padding: 30px; /* Xê dịch mọi thứ xuống 10px */
+        }
+
+        .container {
+            max-width: 400px;
+            margin: 0 auto;
+        }
+
+        .panel-title {
+            text-align: center;
+            margin-top: 20px; /* Thêm margin-top 20px */
+            margin-bottom: 20px;
+            color: #00ff9d; /* Màu chữ tiêu đề */
+            font-size: 2em; /* Kích thước chữ lớn hơn */
+            font-weight: bold; /* Chữ đậm */
+            text-shadow: 2px 2px 0px black; /* Viền đen cho chữ */
+        }
+
+        /* Control Cards */
+        .control-card {
+            background: #f0f0f0; /* Màu nền thẻ */
+            border-radius: 15px;
+            padding: 15px;
+            margin-bottom: 15px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Toggle Switch */
+        .toggle-switch {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin: 10px 0;
+        }
+
+        .switch {
+            position: relative;
+            display: inline-block;
+            width: 60px;
+            height: 34px;
+        }
+
+        .switch input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+
+        .slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: #444;
+            transition: 0.4s;
+            border-radius: 34px;
+        }
+
+        .slider:before {
+            position: absolute;
+            content: "";
+            height: 26px;
+            width: 26px;
+            left: 4px;
+            bottom: 4px;
+            background: white;
+            transition: 0.4s;
+            border-radius: 50%;
+        }
+
+        input:checked + .slider {
+            background: #00ff9d;
+        }
+
+        input:checked + .slider:before {
+            transform: translateX(26px);
+        }
+
+        /* Slider Styling */
+        .slider-control {
+            width: 100%;
+            margin: 15px 0;
+            -webkit-appearance: none;
+            height: 8px;
+            background: #444;
+            border-radius: 4px;
+            outline: none;
+            background-size: 0% 100%; /* Mặc định là 0% */
+        }
+
+        .slider-control::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            width: 24px;
+            height: 24px;
+            background: #00ff9d;
+            border-radius: 50%;
+            cursor: pointer;
+        }
+
+        /* Status Indicator */
+        .status {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin: 10px 0;
+        }
+
+        .status-led {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: #ff3b30;
+        }
+
+        .status-led.active {
+            background: #00ff9d;
+        }
+
+        /* Nhấn đậm cho tất cả chữ */
+        h1, label, span {
+            font-weight: bold; /* Chữ đậm */
+        }
+
+        /* Nút Zalo Admin */
+        .zalo-button {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            background-color: black; /* Màu nền nút */
+            color: white; /* Màu chữ nút */
+            border: none;
+            border-radius: 5px;
+            text-align: center;
+            font-weight: bold;
+            cursor: pointer;
+            margin-top: 15px; /* Khoảng cách phía trên */
+            text-decoration: none; /* Bỏ gạch chân */
+        }
+
+        .zalo-button:hover {
+            background-color: #00cc7d; /* Màu nền khi hover */
+        }
     </style>
 </head>
 <body>
-    <h1>KODER HEADSHOT</h1>
-    <img id="npcImage" src="https://img.upanh.tv/2025/01/20/4774CA97-678E-429D-8F46-8DF853ABD1FC.png" alt="Hình ảnh NPC" class="hidden">
-    <div class="npc">
-        <div class="head">
-            <span class="icon">💀</span>
-        </div>
-        <div class="body"></div>
-        <div class="arm left"></div>
-        <div class="arm right"></div>
-        <div class="leg left"></div>
-        <div class="leg right"></div>
-    </div>
-    
-    <div class="button-container">
-        <button onclick="toggleHead(this)">HEADTRICK</button>
-        <button onclick="toggleBody(this)">Body Aim</button>
-        <button onclick="window.location.href='https://zalo.me/0868124375'">🩴 Admin</button>
-        <button onclick="activateButton(this)">Aimlock Vip</button> 
-    </div>
+    <div class="container">
+        <h1 class="panel-title"> KODER HEADSHOT</h1>
 
-    <div class="credit">Phạm Đồng An</div> 
+        <!-- Power Control -->
+        <div class="control-card">
+            <div class="toggle-switch">
+                <span>SET UP REGEDIT</span>
+                <label class="switch">
+                    <input type="checkbox" id="powerSwitch">
+                    <span class="slider"></span>
+                </label>
+            </div>
+            <div class="status">
+                <div class="status-led" id="powerLed"></div>
+                <span>Status: <span id="powerStatus">OFF</span></span>
+            </div>
+        </div>
+
+        <!-- Brightness Control -->
+        <div class="control-card">
+            <label>AIMFOV PREMIUM 360•</label>
+            <input type="range" class="slider-control" id="brightnessSlider" min="0" max="360" value="180">
+            <div class="status">
+                <span>Value: <span id="brightnessValue">180</span>•</span>
+            </div>
+        </div>
+
+        <!-- Volume Control (New) -->
+        <div class="control-card">
+            <label>SENSITIVITY HEADSHOT</label>
+            <input type="range" class="slider-control" id="volumeSlider" min="0" max="100" value="50">
+            <div class="status">
+                <span>Value: <span id="volumeValue">50</span>%</span>
+            </div>
+        </div>
+
+        <!-- Mode Selector -->
+        <div class="control-card">
+            <label>DEVELOPER : PHẠM ĐỒNG AN</label>
+            <div class="toggle-switch">
+                <button class="mode-btn" onclick="setMode('FREE FIRE ')">FREE FIRE</button>
+                <button class="mode-btn" onclick="setMode('FREE FIRE MAX')">FREE FIRE MAX</button>
+            </div>
+            <div class="status">
+                <span>Mode : <span id="currentMode">Auto</span></span>
+            </div>
+        </div>
+
+        <!-- Zalo Admin Button -->
+        <a href="https://zalo.me/0868124375" target="_blank" class="zalo-button">ZALO MUA FILE VIP FULL ĐỎ</a>
+    </div>
 
     <script>
-        let headShotActive = false;
-        let bodyActive = false;
+        // Power Toggle Logic
+        const powerSwitch = document.getElementById('powerSwitch');
+        const powerLed = document.getElementById('powerLed');
+        const powerStatus = document.getElementById('powerStatus');
 
-        function toggleHead(button) {
-            const head = document.querySelector('.head');
-            const npcImage = document.getElementById('npcImage');
-            headShotActive = !headShotActive;
+        powerSwitch.addEventListener('change', function() {
+            if (this.checked) {
+                powerLed.classList.add('active');
+                powerStatus.textContent = 'ON';
+            } else {
+                powerLed.classList.remove('active');
+                powerStatus.textContent = 'OFF';
+            }
+        });
 
-            head.style.backgroundColor = headShotActive ? 'red' : '#ffcc00';
-            npcImage.classList.toggle('hidden', !headShotActive);
-            activateButton(button);
+        // Brightness Slider
+        const brightnessSlider = document.getElementById('brightnessSlider');
+        const brightnessValue = document.getElementById('brightnessValue');
+
+        brightnessSlider.addEventListener('input', function() {
+            brightnessValue.textContent = this.value;
+            updateSliderBackground(this);
+        });
+
+        // Volume Slider (New)
+        const volumeSlider = document.getElementById('volumeSlider');
+        const volumeValue = document.getElementById('volumeValue');
+
+        volumeSlider.addEventListener('input', function() {
+            volumeValue.textContent = this.value;
+            updateSliderBackground(this);
+        });
+
+        // Cập nhật màu nền của thanh slider
+        function updateSliderBackground(slider) {
+            const value = (slider.value - slider.min) / (slider.max - slider.min) * 100;
+            slider.style.background = `linear-gradient(to right, red ${value}%, #444 ${value}%)`;
         }
 
-        function toggleBody(button) {
-            const body = document.querySelector('.body');
-            bodyActive = !bodyActive;
-            body.style.backgroundColor = bodyActive ? 'red' : '#00ccff';
-            activateButton(button);
-        }
+        // Khởi tạo màu nền cho các slider
+        updateSliderBackground(brightnessSlider);
+        updateSliderBackground(volumeSlider);
 
-        function activateButton(button) {
-            const buttons = document.querySelectorAll('.button-container button');
-            buttons.forEach(btn => {
-                if (btn !== document.querySelector('button:nth-child(3)')) {
-                    btn.classList.remove('active');
-                }
-            });
-            button.classList.add('active');
+        // Mode Selector Logic
+        function setMode(mode) {
+            document.getElementById('currentMode').textContent = mode;
         }
     </script>
 </body>
